@@ -1,6 +1,6 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-export default function ProjectCard({ title, tag }) {
+export default function ProjectCard({ title, tag, image }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -17,13 +17,36 @@ export default function ProjectCard({ title, tag }) {
       }}
       onMouseLeave={() => { x.set(0); y.set(0); }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="glass group relative h-[500px] w-full rounded-[2.5rem] p-12 overflow-hidden cursor-pointer"
+      className="glass group relative h-[500px] w-full rounded-[2.5rem] overflow-hidden"
     >
-      <div className="relative z-10 h-full flex flex-col justify-end" style={{ transform: "translateZ(60px)" }}>
-        <p className="text-[10px] tracking-[0.4em] text-neutral-500 uppercase mb-4">{tag}</p>
-        <h3 className="text-4xl md:text-5xl font-light tracking-tighter text-white">{title}</h3>
+      {image && (
+        <div className="absolute inset-0">
+          <img
+            src={image}
+            alt={title}
+            className="
+              h-full w-full object-cover
+              scale-[1.05]
+              group-hover:scale-110
+              transition-transform duration-700
+            "
+          />
+
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+      )}
+      <div
+        className="relative z-10 h-full flex flex-col justify-end p-12"
+        style={{ transform: "translateZ(60px)" }}
+      >
+        <p className="text-[10px] tracking-[0.4em] text-neutral-400 uppercase mb-4">
+          {tag}
+        </p>
+        <h3 className="text-4xl md:text-5xl font-light tracking-tighter text-white">
+          {title}
+        </h3>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.08] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
     </motion.div>
   );
 }

@@ -18,7 +18,7 @@ export default function Contact() {
         
         <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
           <SocialLink href="https://linkedin.com/in/shiraz-buksh/" label="LinkedIn" icon={<Linkedin size={20} />} />
-          <SocialLink href="https://github.com" label="GitHub" icon={<Github size={20} />} />
+          <SocialLink href="https://github.com/ShirazBuksh" label="GitHub" icon={<Github size={20} />} />
         </div>
         
         <div className="mt-32">
