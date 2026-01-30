@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Github, Linkedin, ArrowUpRight, FileText } from 'lucide-react';
+
+const cvPath = `${import.meta.env.BASE_URL}cv.pdf`
 
 export default function Contact() {
   return (
@@ -18,11 +20,18 @@ export default function Contact() {
         
         <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
           <SocialLink href="https://linkedin.com/in/shiraz-buksh/" label="LinkedIn" icon={<Linkedin size={20} />} />
+          
+          <SocialLink href={cvPath} label="CV" icon={<FileText size={20} />} />
+          
           <SocialLink href="https://github.com/ShirazBuksh" label="GitHub" icon={<Github size={20} />} />
         </div>
         
         <div className="mt-32">
-          <a href="mailto:shirazdev1@gmail.com" className="text-neutral-500 hover:text-white transition-colors text-lg font-light">
+          <p className="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-4">Contact</p>
+          <a 
+            href="mailto:shirazdev1@gmail.com" 
+            className="text-neutral-400 hover:text-white transition-colors text-xl md:text-2xl font-light"
+          >
             shirazdev1@gmail.com
           </a>
         </div>
