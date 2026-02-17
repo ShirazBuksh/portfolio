@@ -11,13 +11,7 @@ export default function SmoothScroll({ children }) {
       smoothWheel: true,
       lerp: 0.07,
     });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
+    
     return () => lenis.destroy();
   }, []);
 

@@ -9,7 +9,6 @@ function Slab({ position, scale, speed }) {
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     mesh.current.rotation.y = Math.sin(t * 0.1 * speed) * 0.2;
-    mesh.current.position.y += Math.sin(t * speed) * 0.0015;
   });
 
   return (
@@ -17,15 +16,15 @@ function Slab({ position, scale, speed }) {
       <mesh ref={mesh} position={position} scale={scale}>
         <boxGeometry args={[1, 1, 1]} />
         <MeshTransmissionMaterial
-          backside
-          samples={4}
-          thickness={0.8}
-          roughness={0.01}
-          chromaticAberration={0.05}
-          anisotropy={0.1}
-          distortion={0.1}
-          color="#ffffff"
-        />
+            backside={false}
+            samples={1}
+            resolution={256}
+            thickness={0.5}
+            roughness={0.05}
+            chromaticAberration={0.02}
+            anisotropy={0}
+            distortion={0}
+          />
       </mesh>
     </Float>
   );
